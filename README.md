@@ -1,1 +1,1 @@
-# snake-ladder-game
+# game
