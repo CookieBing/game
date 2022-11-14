@@ -1,0 +1,8 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: snake-ladder-game
+  main:
+    allow-bean-definition-overriding: true
+  open-snake-ladder: true # 是否开启蛇吻与梯子的功能
