@@ -36,6 +36,11 @@ public class SnakeLadderServiceImpl implements SnakeLadderService {
 	 */
 	private static Integer BLUE_PIPS;
 
+	/**
+	 * 最近一次掷骰子的角色
+	 */
+	private static String LAST_ROLE;
+
 
 	@Override
 	public void start() {
@@ -45,6 +50,17 @@ public class SnakeLadderServiceImpl implements SnakeLadderService {
 
 	@Override
 	public RespData<SnakeLadderGameDTO> rollDice(String role) {
+		if (!GameConstant.RoleEnum.RED.getValue().equals(role) && !GameConstant.RoleEnum.BLUE.getValue().equals(role)) {
+			logger.warn("角色传入有误！");
+			return RespData.error(-1, "角色传入有误！");
+		}
+		// 防止同一角色多次掷骰子
+		if (LAST_ROLE != null && LAST_ROLE.equals(role)) {
+			logger.warn("同一角色不可连续多次掷骰子！");
+			return RespData.error(-1, "同一角色不可连续多次掷骰子！");
+		}
+		LAST_ROLE = role;
+
 		logger.info("red = {}, blue = {}", RED_PIPS, BLUE_PIPS);
 		if (RED_PIPS == null || BLUE_PIPS == null) {
 			start();

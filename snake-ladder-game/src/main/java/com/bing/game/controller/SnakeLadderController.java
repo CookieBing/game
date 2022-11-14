@@ -39,10 +39,6 @@ public class SnakeLadderController {
 	@GetMapping("/roll-dice/{role}")
 	public RespData<SnakeLadderGameDTO> rollDice(@PathVariable("role") String role) {
 		logger.info("进入掷骰子方法！role = {}", role);
-		if (!GameConstant.RoleEnum.RED.getValue().equals(role) && !GameConstant.RoleEnum.BLUE.getValue().equals(role)) {
-			logger.warn("角色传入有误！role = {}", role);
-			return RespData.error(-1, "角色传入有误！");
-		}
 		RespData<SnakeLadderGameDTO> data = snakeLadderService.rollDice(role);
 		logger.info("掷骰子方法执行完毕！data = {}", data.getData());
 		return data;
