@@ -46,6 +46,7 @@ public class SnakeLadderServiceImpl implements SnakeLadderService {
 	public void start() {
 		RED_PIPS = 0;
 		BLUE_PIPS = 0;
+		LAST_ROLE = null;
 	}
 
 	@Override
@@ -102,11 +103,13 @@ public class SnakeLadderServiceImpl implements SnakeLadderService {
 			// 结束对局，清空缓存
 			RED_PIPS = null;
 			BLUE_PIPS = null;
+			LAST_ROLE = null;
 			return RespData.ok(RespCodeEnum.RED_WIN, dto);
 		} else if (BLUE_PIPS == 100) {
 			// 结束对局，清空缓存
 			RED_PIPS = null;
 			BLUE_PIPS = null;
+			LAST_ROLE = null;
 			return RespData.ok(RespCodeEnum.BLUE_WIN, dto);
 		}
 		if (exceedEnd) {
