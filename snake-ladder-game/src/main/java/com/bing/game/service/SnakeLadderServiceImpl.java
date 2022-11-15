@@ -101,15 +101,11 @@ public class SnakeLadderServiceImpl implements SnakeLadderService {
 		BLUE_PIPS = dto.getBluePips();
 		if (RED_PIPS == 100) {
 			// 结束对局，清空缓存
-			RED_PIPS = null;
-			BLUE_PIPS = null;
-			LAST_ROLE = null;
+			end();
 			return RespData.ok(RespCodeEnum.RED_WIN, dto);
 		} else if (BLUE_PIPS == 100) {
 			// 结束对局，清空缓存
-			RED_PIPS = null;
-			BLUE_PIPS = null;
-			LAST_ROLE = null;
+			end();
 			return RespData.ok(RespCodeEnum.BLUE_WIN, dto);
 		}
 		if (exceedEnd) {
@@ -122,6 +118,12 @@ public class SnakeLadderServiceImpl implements SnakeLadderService {
 			return RespData.ok(RespCodeEnum.MEET_LADDER_OR_SNAKE, dto);
 		}
 		return RespData.ok(dto);
+	}
+
+	private void end() {
+		RED_PIPS = null;
+		BLUE_PIPS = null;
+		LAST_ROLE = null;
 	}
 
 	/**

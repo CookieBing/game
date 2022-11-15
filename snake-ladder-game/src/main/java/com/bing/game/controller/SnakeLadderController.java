@@ -1,6 +1,5 @@
 package com.bing.game.controller;
 
-import com.bing.game.constant.GameConstant;
 import com.bing.game.constant.RespData;
 import com.bing.game.entity.SnakeLadderGameDTO;
 import com.bing.game.service.SnakeLadderService;
